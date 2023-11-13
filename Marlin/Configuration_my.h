@@ -1198,23 +1198,23 @@
 // Disable ENDSTOPPULLUPS to set pullups individually
 #define ENDSTOPPULLUP_XMIN
 #define ENDSTOPPULLUP_YMIN
-// #define ENDSTOPPULLUP_ZMIN
-//   #define ENDSTOPPULLUP_IMIN
-//   #define ENDSTOPPULLUP_JMIN
-//   #define ENDSTOPPULLUP_KMIN
-//   #define ENDSTOPPULLUP_UMIN
-//   #define ENDSTOPPULLUP_VMIN
-//   #define ENDSTOPPULLUP_WMIN
-//   #define ENDSTOPPULLUP_XMAX
-//   #define ENDSTOPPULLUP_YMAX
-//   #define ENDSTOPPULLUP_ZMAX
-//   #define ENDSTOPPULLUP_IMAX
-//   #define ENDSTOPPULLUP_JMAX
-//   #define ENDSTOPPULLUP_KMAX
-//   #define ENDSTOPPULLUP_UMAX
-//   #define ENDSTOPPULLUP_VMAX
-//   #define ENDSTOPPULLUP_WMAX
-#define ENDSTOPPULLUP_ZMIN_PROBE
+#define ENDSTOPPULLUP_ZMIN
+//  #define ENDSTOPPULLUP_IMIN
+//  #define ENDSTOPPULLUP_JMIN
+//  #define ENDSTOPPULLUP_KMIN
+//  #define ENDSTOPPULLUP_UMIN
+//  #define ENDSTOPPULLUP_VMIN
+//  #define ENDSTOPPULLUP_WMIN
+//  #define ENDSTOPPULLUP_XMAX
+//  #define ENDSTOPPULLUP_YMAX
+//  #define ENDSTOPPULLUP_ZMAX
+//  #define ENDSTOPPULLUP_IMAX
+//  #define ENDSTOPPULLUP_JMAX
+//  #define ENDSTOPPULLUP_KMAX
+//  #define ENDSTOPPULLUP_UMAX
+//  #define ENDSTOPPULLUP_VMAX
+//  #define ENDSTOPPULLUP_WMAX
+//  #define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 // Enable pulldown for all endstops to prevent a floating state
@@ -1467,9 +1467,7 @@
  *    - Normally-open (NO) also connect to 5V.
  */
 #ifdef USE_BLTOUCH
-// #define Z_MIN_PROBE_PIN Z_MAX_PIN
-#define Z_MIN_PROBE_PIN Z_STOP_PIN
-// #define Z_MIN_PROBE_PIN 32 //TOUCH_CS_PIN //BL_TOUCH_Z_PIN
+#define Z_MIN_PROBE_PIN Z_MAX_PIN
 #endif
 
 /**
