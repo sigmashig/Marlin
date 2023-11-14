@@ -1387,8 +1387,8 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-#define DEFAULT_XJERK 10.0
-#define DEFAULT_YJERK 10.0
+#define DEFAULT_XJERK 5.0
+#define DEFAULT_YJERK 5.0
 #define DEFAULT_ZJERK 0.3
 // #define DEFAULT_IJERK  0.3
 // #define DEFAULT_JJERK  0.3
@@ -1971,7 +1971,7 @@
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS -2.50
+#define Y_MIN_POS 0 //-2.50
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -2204,8 +2204,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-// #define RESTORE_LEVELING_AFTER_G28
-#define ENABLE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
+// #define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating

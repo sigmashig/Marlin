@@ -1283,7 +1283,7 @@
 // Backlash Compensation
 // Adds extra movement to axes on direction-changes to account for backlash.
 //
-// #define BACKLASH_COMPENSATION
+#define BACKLASH_COMPENSATION
 #if ENABLED(BACKLASH_COMPENSATION)
 // Define values for backlash distance and correction.
 // If BACKLASH_GCODE is enabled these values are the defaults.
@@ -1291,7 +1291,7 @@
   {                          \
     0, 0, 0                  \
   }                             // (linear=mm, rotational=°) One value for each linear axis
-#define BACKLASH_CORRECTION 0.0 // 0.0 = no correction; 1.0 = full correction
+#define BACKLASH_CORRECTION 0.5 // 0.0 = no correction; 1.0 = full correction
 
 // Add steps for motor direction changes on CORE kinematics
 // #define CORE_BACKLASH
@@ -1301,7 +1301,7 @@
 // #define BACKLASH_SMOOTHING_MM 3 // (mm)
 
 // Add runtime configuration and tuning of backlash values (M425)
-// #define BACKLASH_GCODE
+#define BACKLASH_GCODE
 
 #if ENABLED(BACKLASH_GCODE)
 // Measure the Z backlash when probing (G29) and set with "M425 Z"
@@ -1331,7 +1331,7 @@
  * Note: HOTEND_OFFSET and CALIBRATION_OBJECT_CENTER must be set to within
  *       ±5mm of true values for G425 to succeed.
  */
-// #define CALIBRATION_GCODE
+#define CALIBRATION_GCODE
 #if ENABLED(CALIBRATION_GCODE)
 
 // #define CALIBRATION_SCRIPT_PRE  "M117 Starting Auto-Calibration\nT0\nG28\nG12\nM117 Calibrating..."
@@ -2703,7 +2703,7 @@
 // Therefore some clients abort after 30 seconds in a timeout.
 // Some other clients start sending commands while receiving a 'wait'.
 // This "wait" is only sent when the buffer is empty. 1 second is a good value here.
-// #define NO_TIMEOUTS 1000 // (ms)
+#define NO_TIMEOUTS 1000 // (ms)
 
 // Some clients will have this feature soon. This could make the NO_TIMEOUTS unnecessary.
 // #define ADVANCED_OK
@@ -3969,12 +3969,12 @@
  * workspace offsets to slightly optimize performance.
  * G92 will revert to its behavior from Marlin 1.0.
  */
-// #define NO_WORKSPACE_OFFSETS
+#define NO_WORKSPACE_OFFSETS
 
 /**
  * Disable M206 and M428 if you don't need home offsets.
  */
-// #define NO_HOME_OFFSETS
+#define NO_HOME_OFFSETS
 
 /**
  * CNC G-code options
@@ -4133,10 +4133,10 @@
  */
 #define HOST_ACTION_COMMANDS
 #if ENABLED(HOST_ACTION_COMMANDS)
-// #define HOST_PAUSE_M76                // Tell the host to pause in response to M76
+#define HOST_PAUSE_M76 // Tell the host to pause in response to M76
 // #define HOST_PROMPT_SUPPORT           // Initiate host prompts to get user feedback
 #if ENABLED(HOST_PROMPT_SUPPORT)
-// #define HOST_STATUS_NOTIFICATIONS   // Send some status messages to the host as notifications
+#define HOST_STATUS_NOTIFICATIONS // Send some status messages to the host as notifications
 #endif
 // #define HOST_START_MENU_ITEM          // Add a menu item that tells the host to start
 // #define HOST_SHUTDOWN_MENU_ITEM       // Add a menu item that tells the host to shut down
