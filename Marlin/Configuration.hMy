@@ -849,7 +849,7 @@
 // #define PID_BED_DEBUG // Print Bed PID debug data to the serial port.
 
 // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
-// from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
+// from FOPDT model -   kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
 #define DEFAULT_bedKp 100.43
 #define DEFAULT_bedKi 15.47
 #define DEFAULT_bedKd 434.75
@@ -1198,23 +1198,23 @@
 // Disable ENDSTOPPULLUPS to set pullups individually
 #define ENDSTOPPULLUP_XMIN
 #define ENDSTOPPULLUP_YMIN
-#define ENDSTOPPULLUP_ZMIN
-//  #define ENDSTOPPULLUP_IMIN
-//  #define ENDSTOPPULLUP_JMIN
-//  #define ENDSTOPPULLUP_KMIN
-//  #define ENDSTOPPULLUP_UMIN
-//  #define ENDSTOPPULLUP_VMIN
-//  #define ENDSTOPPULLUP_WMIN
-//  #define ENDSTOPPULLUP_XMAX
-//  #define ENDSTOPPULLUP_YMAX
-//  #define ENDSTOPPULLUP_ZMAX
-//  #define ENDSTOPPULLUP_IMAX
-//  #define ENDSTOPPULLUP_JMAX
-//  #define ENDSTOPPULLUP_KMAX
-//  #define ENDSTOPPULLUP_UMAX
-//  #define ENDSTOPPULLUP_VMAX
-//  #define ENDSTOPPULLUP_WMAX
-//  #define ENDSTOPPULLUP_ZMIN_PROBE
+// #define ENDSTOPPULLUP_ZMIN
+//   #define ENDSTOPPULLUP_IMIN
+//   #define ENDSTOPPULLUP_JMIN
+//   #define ENDSTOPPULLUP_KMIN
+//   #define ENDSTOPPULLUP_UMIN
+//   #define ENDSTOPPULLUP_VMIN
+//   #define ENDSTOPPULLUP_WMIN
+//   #define ENDSTOPPULLUP_XMAX
+//   #define ENDSTOPPULLUP_YMAX
+//   #define ENDSTOPPULLUP_ZMAX
+//   #define ENDSTOPPULLUP_IMAX
+//   #define ENDSTOPPULLUP_JMAX
+//   #define ENDSTOPPULLUP_KMAX
+//   #define ENDSTOPPULLUP_UMAX
+//   #define ENDSTOPPULLUP_VMAX
+//   #define ENDSTOPPULLUP_WMAX
+#define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 // Enable pulldown for all endstops to prevent a floating state
@@ -1348,7 +1348,7 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    1000, 1000, 100, 2000        \
+    2000, 2000, 100, 2000        \
   }
 
 // #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -1431,7 +1431,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+// #define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1467,7 +1467,9 @@
  *    - Normally-open (NO) also connect to 5V.
  */
 #ifdef USE_BLTOUCH
-#define Z_MIN_PROBE_PIN Z_MAX_PIN
+// #define Z_MIN_PROBE_PIN Z_MAX_PIN
+#define Z_MIN_PROBE_PIN Z_STOP_PIN
+// #define Z_MIN_PROBE_PIN 32 //TOUCH_CS_PIN //BL_TOUCH_Z_PIN
 #endif
 
 /**
@@ -1652,9 +1654,9 @@
   }
 #define Z_PROBE_ALLEN_KEY_DEPLOY_2_FEEDRATE (XY_PROBE_FEEDRATE) / 10
 
-#define Z_PROBE_ALLEN_KEY_DEPLOY_3      \
-  {                                     \
-    0.0, (PRINTABLE_RADIUS)*0.75, 100.0 \
+#define Z_PROBE_ALLEN_KEY_DEPLOY_3        \
+  {                                       \
+    0.0, (PRINTABLE_RADIUS) * 0.75, 100.0 \
   }
 #define Z_PROBE_ALLEN_KEY_DEPLOY_3_FEEDRATE XY_PROBE_FEEDRATE
 
@@ -1969,7 +1971,7 @@
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS -2.50
+#define Y_MIN_POS 0 //-2.50
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -2202,8 +2204,8 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-// #define RESTORE_LEVELING_AFTER_G28
-#define ENABLE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
+// #define ENABLE_LEVELING_AFTER_G28
 
 /**
  * Auto-leveling needs preheating
@@ -2332,17 +2334,17 @@
   {                                                                             \
     (X_BED_SIZE) / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE) / 4 + (CLIP_W) / 2, CLIP_H \
   }
-#define OBSTACLE2                                                                     \
-  {                                                                                   \
-    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE)*3 / 4 + (CLIP_W) / 2, CLIP_H \
+#define OBSTACLE2                                                                       \
+  {                                                                                     \
+    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE) * 3 / 4 + (CLIP_W) / 2, CLIP_H \
   }
 #define OBSTACLE3                                                                                         \
   {                                                                                                       \
     (X_BED_SIZE) / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE) / 4 + (CLIP_W) / 2, Y_BED_SIZE \
   }
-#define OBSTACLE4                                                                                               \
-  {                                                                                                             \
-    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE)*3 / 4 + (CLIP_W) / 2, Y_BED_SIZE \
+#define OBSTACLE4                                                                                                 \
+  {                                                                                                               \
+    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE) * 3 / 4 + (CLIP_W) / 2, Y_BED_SIZE \
   }
 
 // The probed grid must be inset for G29 J. This is okay, since it is
@@ -2535,7 +2537,7 @@
  */
 #define EEPROM_SETTINGS // Persistent storage with M500 and M501
 // #define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
-// #define EEPROM_CHITCHAT    // Give feedback on EEPROM commands. Disable to save PROGMEM.
+#define EEPROM_CHITCHAT    // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
 #define EEPROM_AUTO_INIT // Init EEPROM automatically on any errors.

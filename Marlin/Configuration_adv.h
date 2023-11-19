@@ -21,6 +21,8 @@
  */
 #pragma once
 
+// #define CONFIG_EXAMPLES_DIR "Kingroon/KP3S_Pro"
+
 /**
  * Configuration_adv.h
  *
@@ -930,20 +932,17 @@
 
 #define HOMING_BUMP_MM \
   {                    \
-    3, 3, 3            \
+    5, 5, 2            \
   } // (linear=mm, rotational=°) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR \
   {                         \
     2, 2, 4                 \
   } // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
-#define HOMING_BACKOFF_POST_MM \
-  {                            \
-    2, 2, 2                    \
-  } // (linear=mm, rotational=°) Backoff from endstops after homing
+// #define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
 // #define XY_COUNTERPART_BACKOFF_MM 0         // (mm) Backoff X after homing Y, and vice-versa
 
-#define QUICK_HOME // If G28 contains XY do a diagonal move first
+// #define QUICK_HOME                          // If G28 contains XY do a diagonal move first
 // #define HOME_Y_BEFORE_X                     // If G28 contains XY home Y before X
 // #define HOME_Z_FIRST                        // Home Z first. Requires a real endstop (not a probe).
 // #define CODEPENDENT_XY_HOMING               // If X/Y can't home without homing Y/X first
@@ -1589,8 +1588,7 @@
  * We encourage you to take advantage of this new feature and we also
  * respectfully request that you retain the unmodified Marlin boot screen.
  */
-// #define SHOW_BOOTSCREEN                 // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
-#define SOUND_MENU_ITEM
+// #define SHOW_BOOTSCREEN // Show the Marlin bootscreen on startup. ** ENABLE FOR PRODUCTION **
 #if ENABLED(SHOW_BOOTSCREEN)
 #define BOOTSCREEN_TIMEOUT 3000 // (ms) Total Duration to display the boot screen(s)
 #if ANY(HAS_MARLINUI_U8GLIB, TFT_COLOR_UI)
@@ -1618,13 +1616,13 @@
 #define STATUS_MESSAGE_SCROLLING
 
 // Apply a timeout to low-priority status messages
-#define STATUS_MESSAGE_TIMEOUT_SEC 30 // (seconds)
+// #define STATUS_MESSAGE_TIMEOUT_SEC 30 // (seconds)
 
 // On the Info Screen, display XY with one decimal place when possible
 #define LCD_DECIMAL_SMALL_XY
 
 // Show the E position (filament used) during printing
-#define LCD_SHOW_E_TOTAL
+// #define LCD_SHOW_E_TOTAL
 
 // Display a negative temperature instead of "err"
 #define SHOW_TEMPERATURE_BELOW_ZERO
@@ -1745,7 +1743,7 @@
  * an option on the LCD screen to continue the print from the last-known
  * point in the file.
  */
-#define POWER_LOSS_RECOVERY
+// #define POWER_LOSS_RECOVERY
 #if ENABLED(POWER_LOSS_RECOVERY)
 #define PLR_ENABLED_DEFAULT false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
 // #define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
@@ -2272,7 +2270,7 @@
 // #define BABYSTEP_WITHOUT_HOMING
 // #define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement)
 // #define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
-#define BABYSTEP_INVERT_Z // Enable if Z babysteps should go the other way
+// #define BABYSTEP_INVERT_Z               // Enable if Z babysteps should go the other way
 // #define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
 #define BABYSTEP_MULTIPLICATOR_Z 1  // (steps or mm) Steps or millimeter distance for each Z babystep
 #define BABYSTEP_MULTIPLICATOR_XY 1 // (steps or mm) Steps or millimeter distance for each XY babystep
@@ -2327,7 +2325,7 @@
 #else
 #define ADVANCE_K 0.084 // (mm) Compression length applying to all extruders
 #endif
-// #define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
+#define ADVANCE_K_EXTRA // Add a second linear advance constant, configurable with M900 L.
 // #define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
 #define ALLOW_LOW_EJERK // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
 // #define EXPERIMENTAL_I2S_LA   // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
@@ -2703,10 +2701,10 @@
 // Therefore some clients abort after 30 seconds in a timeout.
 // Some other clients start sending commands while receiving a 'wait'.
 // This "wait" is only sent when the buffer is empty. 1 second is a good value here.
-#define NO_TIMEOUTS 1000 // (ms)
+// #define NO_TIMEOUTS 1000 // (ms)
 
 // Some clients will have this feature soon. This could make the NO_TIMEOUTS unnecessary.
-// #define ADVANCED_OK
+#define ADVANCED_OK
 
 // Printrun may have trouble receiving long strings all at once.
 // This option inserts short delays between lines of serial output.
@@ -2760,7 +2758,7 @@
 #endif
 #define RETRACT_LENGTH 2                // (mm) Default retract length (positive value)
 #define RETRACT_LENGTH_SWAP 13          // (mm) Default swap retract length (positive value)
-#define RETRACT_FEEDRATE 60             // (mm/s) Default feedrate for retracting
+#define RETRACT_FEEDRATE 45             // (mm/s) Default feedrate for retracting
 #define RETRACT_ZRAISE 0                // (mm) Default retract Z-raise
 #define RETRACT_RECOVER_LENGTH 0        // (mm) Default additional recover length (added to retract length on recover)
 #define RETRACT_RECOVER_LENGTH_SWAP 0   // (mm) Default additional swap recover length (added to retract length on recover from toolchange)
@@ -4384,7 +4382,6 @@
  *   #define WIFI_SSID "WiFi SSID"
  *   #define WIFI_PWD  "WiFi Password"
  */
-// #include "Configuration_Secure.h" // External file with WiFi SSID / Password
 // #include "Configuration_Secure.h" // External file with WiFi SSID / Password
 #endif
 

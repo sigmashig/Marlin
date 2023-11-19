@@ -20,8 +20,8 @@
  *
  */
 #pragma once
-// #error "Don't build with import-2.1.x configurations!"
-// #error "Use the 'bugfix...' or 'release...' configurations matching your Marlin version."
+
+#define CONFIG_EXAMPLES_DIR "Kingroon/KP3S_Pro"
 
 /**
  * Configuration.h
@@ -58,7 +58,7 @@
  */
 #define X_PROBE_OFFSET 28.5
 #define Y_PROBE_OFFSET -7.5
-#define Z_PROBE_OFFSET -1.45
+#define Z_PROBE_OFFSET -0.60
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -148,7 +148,7 @@
 // #define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "KP3S Pro S1"
+#define CUSTOM_MACHINE_NAME "KP3S Pro"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -913,8 +913,8 @@
 #define PID_FUNCTIONAL_RANGE 10 // If the temperature difference between the target temperature and the actual temperature
                                 // is more than PID_FUNCTIONAL_RANGE then the PID will be shut off and the heater will be set to min/max.
 
-#define PID_EDIT_MENU     // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
-#define PID_AUTOTUNE_MENU // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
+// #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of flash)
+// #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of flash)
 #endif
 
 // @section safety
@@ -927,7 +927,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 180
+#define EXTRUDE_MINTEMP 170
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -1193,28 +1193,28 @@
 // @section endstops
 
 // Enable pullup for all endstops to prevent a floating state
-// #define ENDSTOPPULLUPS
+#define ENDSTOPPULLUPS
 #if DISABLED(ENDSTOPPULLUPS)
 // Disable ENDSTOPPULLUPS to set pullups individually
-#define ENDSTOPPULLUP_XMIN
-#define ENDSTOPPULLUP_YMIN
+// #define ENDSTOPPULLUP_XMIN
+// #define ENDSTOPPULLUP_YMIN
 // #define ENDSTOPPULLUP_ZMIN
-//   #define ENDSTOPPULLUP_IMIN
-//   #define ENDSTOPPULLUP_JMIN
-//   #define ENDSTOPPULLUP_KMIN
-//   #define ENDSTOPPULLUP_UMIN
-//   #define ENDSTOPPULLUP_VMIN
-//   #define ENDSTOPPULLUP_WMIN
-//   #define ENDSTOPPULLUP_XMAX
-//   #define ENDSTOPPULLUP_YMAX
-//   #define ENDSTOPPULLUP_ZMAX
-//   #define ENDSTOPPULLUP_IMAX
-//   #define ENDSTOPPULLUP_JMAX
-//   #define ENDSTOPPULLUP_KMAX
-//   #define ENDSTOPPULLUP_UMAX
-//   #define ENDSTOPPULLUP_VMAX
-//   #define ENDSTOPPULLUP_WMAX
-#define ENDSTOPPULLUP_ZMIN_PROBE
+// #define ENDSTOPPULLUP_IMIN
+// #define ENDSTOPPULLUP_JMIN
+// #define ENDSTOPPULLUP_KMIN
+// #define ENDSTOPPULLUP_UMIN
+// #define ENDSTOPPULLUP_VMIN
+// #define ENDSTOPPULLUP_WMIN
+// #define ENDSTOPPULLUP_XMAX
+// #define ENDSTOPPULLUP_YMAX
+// #define ENDSTOPPULLUP_ZMAX
+// #define ENDSTOPPULLUP_IMAX
+// #define ENDSTOPPULLUP_JMAX
+// #define ENDSTOPPULLUP_KMAX
+// #define ENDSTOPPULLUP_UMAX
+// #define ENDSTOPPULLUP_VMAX
+// #define ENDSTOPPULLUP_WMAX
+// #define ENDSTOPPULLUP_ZMIN_PROBE
 #endif
 
 // Enable pulldown for all endstops to prevent a floating state
@@ -1287,7 +1287,7 @@
  *
  * :[2,3,4,5,6,7]
  */
-#define ENDSTOP_NOISE_THRESHOLD 2
+// #define ENDSTOP_NOISE_THRESHOLD 2
 
 // Check for stuck or disconnected endstops during homing moves.
 #define DETECT_BROKEN_ENDSTOP
@@ -1319,7 +1319,7 @@
  */
 #define DEFAULT_AXIS_STEPS_PER_UNIT \
   {                                 \
-    160, 160, 800, 792              \
+    160, 160, 800, 815              \
   }
 
 /**
@@ -1329,7 +1329,7 @@
  */
 #define DEFAULT_MAX_FEEDRATE \
   {                          \
-    200, 200, 5, 100         \
+    200, 200, 4, 100         \
   }
 
 // #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -1348,7 +1348,7 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    1000, 1000, 100, 2000        \
+    1000, 1000, 100, 1000        \
   }
 
 // #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -1369,9 +1369,9 @@
  *   M204 I    Angular Acceleration
  *   M204 J    Angular Travel Acceleration
  */
-#define DEFAULT_ACCELERATION 1200         // X, Y, Z ... and E acceleration for printing moves
+#define DEFAULT_ACCELERATION 1000         // X, Y, Z ... and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION 1000 // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION 1500  // X, Y, Z ... acceleration for travel (non printing) moves
+#define DEFAULT_TRAVEL_ACCELERATION 1000  // X, Y, Z ... acceleration for travel (non printing) moves
 #if ENABLED(AXIS4_ROTATES)
 #define DEFAULT_ANGULAR_ACCELERATION 3000        // I, J, K acceleration for rotational-only printing moves
 #define DEFAULT_ANGULAR_TRAVEL_ACCELERATION 3000 // I, J, K acceleration for rotational-only travel (non printing) moves
@@ -1387,9 +1387,9 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-#define DEFAULT_XJERK 5.0
-#define DEFAULT_YJERK 5.0
-#define DEFAULT_ZJERK 0.3
+#define DEFAULT_XJERK 15.0
+#define DEFAULT_YJERK 15.0
+#define DEFAULT_ZJERK 0.4
 // #define DEFAULT_IJERK  0.3
 // #define DEFAULT_JJERK  0.3
 // #define DEFAULT_KJERK  0.3
@@ -1467,9 +1467,7 @@
  *    - Normally-open (NO) also connect to 5V.
  */
 #ifdef USE_BLTOUCH
-// #define Z_MIN_PROBE_PIN Z_MAX_PIN
 #define Z_MIN_PROBE_PIN Z_STOP_PIN
-// #define Z_MIN_PROBE_PIN 32 //TOUCH_CS_PIN //BL_TOUCH_Z_PIN
 #endif
 
 /**
@@ -1654,9 +1652,9 @@
   }
 #define Z_PROBE_ALLEN_KEY_DEPLOY_2_FEEDRATE (XY_PROBE_FEEDRATE) / 10
 
-#define Z_PROBE_ALLEN_KEY_DEPLOY_3      \
-  {                                     \
-    0.0, (PRINTABLE_RADIUS)*0.75, 100.0 \
+#define Z_PROBE_ALLEN_KEY_DEPLOY_3        \
+  {                                       \
+    0.0, (PRINTABLE_RADIUS) * 0.75, 100.0 \
   }
 #define Z_PROBE_ALLEN_KEY_DEPLOY_3_FEEDRATE XY_PROBE_FEEDRATE
 
@@ -1829,7 +1827,7 @@
 #define PROBE_OFFSET_ZMAX 10  // (mm)
 
 // Enable the M48 repeatability test to test probe accuracy
-#define Z_MIN_PROBE_REPEATABILITY_TEST
+// #define Z_MIN_PROBE_REPEATABILITY_TEST
 
 // Before deploy/stow pause for user confirmation
 // #define PAUSE_BEFORE_DEPLOY_STOW
@@ -1929,12 +1927,12 @@
  *  - Use a low value (i.e., Z_MIN_POS) if the nozzle falls down to the bed.
  *  - Use a large value (i.e., Z_MAX_POS) if the bed falls down, away from the nozzle.
  */
-#define Z_IDLE_HEIGHT Z_HOME_POS
+// #define Z_IDLE_HEIGHT Z_HOME_POS
 
 #define Z_CLEARANCE_FOR_HOMING 4 // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                  // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
-#define Z_AFTER_HOMING 10 // (mm) Height to move to after homing (if Z was homed)
+#define Z_AFTER_HOMING 15 // (mm) Height to move to after homing (if Z was homed)
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
@@ -1971,7 +1969,7 @@
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS 0 //-2.50
+#define Y_MIN_POS 0 // ##-2.50
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
@@ -2213,7 +2211,7 @@
 #define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
 #define LEVELING_NOZZLE_TEMP 120 // (°C) Only applies to E0 at this time
-#define LEVELING_BED_TEMP 60
+#define LEVELING_BED_TEMP 50
 #endif
 
 /**
@@ -2282,7 +2280,7 @@
 
 // Beyond the probed grid, continue the implied tilt?
 // Default is to maintain the height of the nearest edge.
-#define EXTRAPOLATE_BEYOND_GRID
+// #define EXTRAPOLATE_BEYOND_GRID
 
 //
 // Subdivision of the grid by Catmull-Rom method.
@@ -2334,17 +2332,17 @@
   {                                                                             \
     (X_BED_SIZE) / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE) / 4 + (CLIP_W) / 2, CLIP_H \
   }
-#define OBSTACLE2                                                                     \
-  {                                                                                   \
-    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE)*3 / 4 + (CLIP_W) / 2, CLIP_H \
+#define OBSTACLE2                                                                       \
+  {                                                                                     \
+    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, 0, (X_BED_SIZE) * 3 / 4 + (CLIP_W) / 2, CLIP_H \
   }
 #define OBSTACLE3                                                                                         \
   {                                                                                                       \
     (X_BED_SIZE) / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE) / 4 + (CLIP_W) / 2, Y_BED_SIZE \
   }
-#define OBSTACLE4                                                                                               \
-  {                                                                                                             \
-    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE)*3 / 4 + (CLIP_W) / 2, Y_BED_SIZE \
+#define OBSTACLE4                                                                                                 \
+  {                                                                                                               \
+    (X_BED_SIZE) * 3 / 4 - (CLIP_W) / 2, (Y_BED_SIZE) - (CLIP_H), (X_BED_SIZE) * 3 / 4 + (CLIP_W) / 2, Y_BED_SIZE \
   }
 
 // The probed grid must be inset for G29 J. This is okay, since it is
@@ -2359,7 +2357,7 @@
 //===========================================================================
 
 #define MESH_INSET 10       // Set Mesh bounds as an inset region of the bed
-#define GRID_MAX_POINTS_X 5 // Don't use more than 7 points per axis, implementation limited.
+#define GRID_MAX_POINTS_X 3 // Don't use more than 7 points per axis, implementation limited.
 #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 // #define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
@@ -2384,7 +2382,7 @@
 #if ENABLED(LCD_BED_TRAMMING)
 #define BED_TRAMMING_INSET_LFRB \
   {                             \
-    20, 20, 20, 20              \
+    30, 30, 30, 30              \
   }                                 // (mm) Left, Front, Right, Back insets
 #define BED_TRAMMING_HEIGHT 0.0     // (mm) Z height of nozzle at tramming points
 #define BED_TRAMMING_Z_HOP 4.0      // (mm) Z height of nozzle between tramming points
@@ -2537,11 +2535,11 @@
  */
 #define EEPROM_SETTINGS // Persistent storage with M500 and M501
 // #define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
-// #define EEPROM_CHITCHAT    // Give feedback on EEPROM commands. Disable to save PROGMEM.
+#define EEPROM_CHITCHAT    // Give feedback on EEPROM commands. Disable to save PROGMEM.
 #define EEPROM_BOOT_SILENT // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
-#define EEPROM_AUTO_INIT // Init EEPROM automatically on any errors.
-#define EEPROM_INIT_NOW  // Init EEPROM on first boot after a new build.
+// #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
+#define EEPROM_INIT_NOW // Init EEPROM on first boot after a new build.
 #endif
 
 // @section host
@@ -2579,7 +2577,7 @@
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED 0 // Value from 0 to 255
 
-#define PREHEAT_2_LABEL "PETG"
+#define PREHEAT_2_LABEL "PTG"
 #define PREHEAT_2_TEMP_HOTEND 200
 #define PREHEAT_2_TEMP_BED 80
 #define PREHEAT_2_TEMP_CHAMBER 35
@@ -3618,8 +3616,7 @@
 // #define TOUCH_CALIBRATION_Y 8553
 // #define TOUCH_OFFSET_X 353
 // #define TOUCH_OFFSET_Y -16
-//  #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
-// #define TOUCH_ORIENTATION TOUCH_PORTRAIT
+// #define TOUCH_ORIENTATION TOUCH_LANDSCAPE
 
 #if ALL(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
 #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM
